@@ -9,4 +9,9 @@ docker network create -d bridge msa
 1. СНАЧАЛА ЗАПУСКАЮТСЯ docker-compose СОДЕРЖАЩИЕ BACKEND ПРИЛОЖЕНИЕ (каждый docker-compose.yml внутри директорий auth и map)
 2. ПОТОМ ЗАПУСКАЕТСЯ docker-compose, СОДЕРЖАЩИЙ NGINX (лежит в корне)
 
-Команда: docker-compose up --build
+Команды: 
+```
+docker-compose/docker-compose.map.yml up --build
+docker-compose/docker-compose.auth.yml up --build
+docker-compose/docker-compose.nginx.yml up --build
+```

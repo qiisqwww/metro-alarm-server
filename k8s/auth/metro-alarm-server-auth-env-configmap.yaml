@@ -1,0 +1,25 @@
+apiVersion: v1
+data:
+  ACCESS_TOKEN_EXPIRE_MINUTES: "60"
+  ALGORITHM: RS256
+  DB_HOST: postgres_auth
+  DB_NAME: metro_alarm_server_auth
+  DB_PASS: mz3TPKvH9dk4rafJ
+  DB_PORT: "5432"
+  DB_USER: root
+  DEBUG: "FALSE"
+  DOCS_URL: /auth/docs
+  HTTP_HOST: 0.0.0.0
+  HTTP_PORT: "8081"
+  LOGGING_PATH: logs/log.log
+  OPENAPI_URL: /auth/openapi.json
+  PRIVATE_KEY_PATH: certs/private.pem
+  PROJECT_NAME: Metro Alarm Server (auth microservice)
+  PUBLIC_KEY_PATH: certs/public.pem
+  REFRESH_TOKEN_EXPIRE_DAYS: "30"
+  SECRET_INSIDE_KEY: ZoP78w2Il8nuOyA1NZOox2rk944rFevcWwTvXJrbuMgw67bfOW91xvGar9TdzOVz
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: metro-alarm-server-auth-metro-alarm-server-auth-env
+  name: metro-alarm-server-auth-env

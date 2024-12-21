@@ -1,9 +1,9 @@
 version: '3.9'
 
 services:
-  proxy:
+  nginx:
     build:
-      dockerfile: ./nginx/Dockerfile
+      dockerfile: ../nginx/Dockerfile
     ports:
       - "443:443"
     networks:

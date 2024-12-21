@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  POSTGRES_DB: metro_alarm_server_auth
+  POSTGRES_PASSWORD: mz3TPKvH9dk4rafJ
+  POSTGRES_USER: root
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: postgres-auth-postgres-auth-database-env
+  name: postgres-auth-database-env

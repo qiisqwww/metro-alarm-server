@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  postgresql.conf: |
+    log_min_duration_statement = 1000
+    log_directory = '/var/lib/postgresql/data'
+    log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
+    logging_collector = on
+    listen_addresses = '*'
+kind: ConfigMap
+metadata:
+  annotations:
+    use-subpath: "true"
+  labels:
+    io.kompose.service: postgres-auth
+  name: postgres-auth-cm1

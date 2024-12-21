@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  metro_alarm_server_map:
+    env_file:
+      - ../map/.env/.env
+    networks:
+      - msa
+    build:
+      dockerfile: ../map/docker/Dockerfile
+      context: ../map/
+    command: ["/app/scripts/app.sh"]
+    volumes:
+      - ../map/alembic/versions:/app/alembic/versions
+      - ../map/maps:/app/maps
+      - ../map/logs:/app/logs
+    depends_on:
+      postgres_map:
+        condition: service_healthy
+
+
+  postgres_map:
+    image: postgres:16.1-alpine3.19
+    networks:
+      - msa
+    restart: always
+    env_file:
+      - ../map/.env/.database.env
+    volumes:
+      - /var/lib/metro_alarm_server_auth_db:/var/lib/postgresql/data
+      - ../map/postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+networks:
+  msa:
+    driver: bridge
+    external: true

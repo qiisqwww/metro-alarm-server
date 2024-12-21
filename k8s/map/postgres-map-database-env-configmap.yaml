@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  POSTGRES_DB: metro_alarm_server_map
+  POSTGRES_PASSWORD: Povarlolik__220
+  POSTGRES_USER: root
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: postgres-map-postgres-map-database-env
+  name: postgres-map-database-env
