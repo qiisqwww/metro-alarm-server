@@ -6,8 +6,8 @@
 docker network create -d bridge msa
 
 Затем поочередно запускаются docker-compose, причем:
-1. СНАЧАЛА ЗАПУСКАЮТСЯ docker-compose СОДЕРЖАЩИЕ BACKEND ПРИЛОЖЕНИЕ (каждый docker-compose.yml внутри директорий auth и map)
-2. ПОТОМ ЗАПУСКАЕТСЯ docker-compose, СОДЕРЖАЩИЙ NGINX (лежит в корне)
+1. СНАЧАЛА ЗАПУСКАЮТСЯ docker-compose СОДЕРЖАЩИЕ BACKEND ПРИЛОЖЕНИЯ (map и auth внутри /docker-compose)
+2. ПОТОМ ЗАПУСКАЕТСЯ docker-compose, СОДЕРЖАЩИЙ NGINX (nginx внутри /docker-compose)
 
 Команды: 
 ```
