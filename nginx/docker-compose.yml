@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  proxy:
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - "443:443"
+    networks:
+      - msa
+
+networks:
+  msa:
+    driver: bridge
+    external: true
