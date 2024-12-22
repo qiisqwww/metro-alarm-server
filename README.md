@@ -11,7 +11,7 @@ docker network create -d bridge msa
 
 Команды: 
 ```
-docker-compose/docker-compose.map.yml up --build
-docker-compose/docker-compose.auth.yml up --build
-docker-compose/docker-compose.nginx.yml up --build
+docker-compose -f .\docker-compose\docker-compose.map.yml up --build
+docker-compose -f .\docker-compose\docker-compose.auth.yml up --build
+docker-compose -f .\docker-compose\docker-compose.nginx.yml up --build
 ```

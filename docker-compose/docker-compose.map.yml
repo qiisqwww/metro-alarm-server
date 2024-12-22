@@ -4,8 +4,6 @@ services:
   metro_alarm_server_map:
     env_file:
       - ../map/.env/.env
-    networks:
-      - msa
     build:
       dockerfile: ../map/docker/Dockerfile
       context: ../map/
@@ -17,23 +15,25 @@ services:
     depends_on:
       postgres_map:
         condition: service_healthy
+    networks:
+      - msa
 
 
   postgres_map:
     image: postgres:16.1-alpine3.19
-    networks:
-      - msa
     restart: always
     env_file:
       - ../map/.env/.database.env
     volumes:
-      - /var/lib/metro_alarm_server_auth_db:/var/lib/postgresql/data
+      - ../map/postgres/db:/var/lib/postgresql/data
       - ../map/postgres/postgresql.conf:/etc/postgresql/postgresql.conf
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - msa
 
 
 networks:
